@@ -23,5 +23,5 @@ This project demonstrates how to implement RecyclerView in Jetpack Compose using
 
 Click the thumbnail to watch the demo:
 
- [![Watch the demo](https://img.youtube.com/vi/-obKGXogLwA/0.jpg)](https://youtube.com/shorts/-obKGXogLwA?si=JCK6i3TB1_Do7VIi)
+ [![Watch the demo](https://img.youtube.com/vi/oBl7VOJtgoI/0.jpg)](https://youtu.be/oBl7VOJtgoI?si=HjUqGIFlwNhkmMUS)
 
