@@ -7,9 +7,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -29,7 +32,6 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun CategoryListScreen(navController: NavHostController) {
-    val context = LocalContext.current
 
     LazyColumn( modifier = Modifier
         .fillMaxSize()
@@ -112,3 +114,73 @@ fun getCategoryList(): MutableList<Category> {
     return catList
 
 }
+
+
+@Composable
+fun CategoryListScreenRow(navController: NavHostController) {
+
+    LazyRow(
+        modifier = Modifier
+            .height(120.dp)
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        items(getCategoryList()) { item ->
+            BlocCategoryRow (
+                imgRes = item.img,
+                title = item.title,
+                subtitle = item.subTitle,
+                onClick = {
+                    navController.navigate("detail/${item.img}/${item.title}/${item.subTitle}"){
+                        launchSingleTop = true
+                      //  popUpTo(navController.graph.id) { inclusive = false }
+                    }
+
+
+                })
+        }
+    }
+}
+@Composable
+fun BlocCategoryRow(
+    imgRes: Int, title: String, subtitle: String, onClick: () -> Unit // Lambda for click handling
+) {
+    Card(
+        elevation = CardDefaults.elevatedCardElevation(8.dp),
+        modifier = Modifier
+            .padding(8.dp)
+            .width(200.dp)
+            .height(120.dp)
+            .clickable { onClick() } // Handle clicks
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(10.dp)) {
+            Image(
+                painter = painterResource(id = imgRes),
+                contentDescription = "",
+                modifier = Modifier
+                    .size(100.dp)
+                    .height(150.dp)
+                    .padding(8.dp)
+                    .weight(0.3f)
+            )
+            itemDecorationRow(title, subtitle, Modifier.weight(0.7f))
+        }
+    }
+}
+
+@Composable
+private fun itemDecorationRow(title: String, subtitle: String, modifier: Modifier) {
+    Column(modifier = modifier.height(200.dp)) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.headlineMedium,
+            fontWeight = FontWeight.Normal
+        )
+        Text(
+            text = subtitle,
+            fontWeight = FontWeight.Normal
+        )
+    }
+}
+
+
+
