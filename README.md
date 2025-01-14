@@ -11,11 +11,8 @@ This project demonstrates how to implement RecyclerView in Jetpack Compose using
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repository-name.git
+   git clone https://github.com/DevIrfan0900/RecyclerviewJetpackCompose
 #Prerequisites
 -Android Studio 4.2 or higher
 -Kotlin 1.5+
 -Jetpack Compose 1.0+
-#Additional Information:
--This project serves as a good starting point for developers working with lists in Jetpack Compose.
--You can modify the data set and UI components to suit your project requirements.
